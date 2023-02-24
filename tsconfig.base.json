@@ -8,13 +8,18 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2020",
     "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@tvp/data-access": ["libs/data-access/src/index.ts"],
+      "@tvp/feature": ["libs/feature/src/index.ts"],
+      "@tvp/ui": ["libs/ui/src/index.ts"],
+      "@tvp/util": ["libs/util/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

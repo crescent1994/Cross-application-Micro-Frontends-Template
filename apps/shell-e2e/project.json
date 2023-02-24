@@ -1,30 +1,31 @@
 {
   "name": "shell-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/shell-e2e/src",
   "projectType": "application",
   "targets": {
     "e2e": {
-      "executor": "@nrwl/cypress:cypress",
+      "executor": "@angular-devkit/build-angular:protractor",
       "options": {
-        "cypressConfig": "apps/shell-e2e/cypress.config.ts",
-        "devServerTarget": "shell:serve:development",
-        "testingType": "e2e"
+        "protractorConfig": "apps/shell-e2e/protractor.conf.js"
       },
       "configurations": {
         "production": {
           "devServerTarget": "shell:serve:production"
+        },
+        "development": {
+          "devServerTarget": "shell:serve:development"
         }
-      }
+      },
+      "defaultConfiguration": "development"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/shell-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": ["apps/shell-e2e/**/*.ts"]
       }
     }
   },
-  "tags": [],
-  "implicitDependencies": ["shell"]
+  "implicitDependencies": ["shell"],
+  "tags": []
 }

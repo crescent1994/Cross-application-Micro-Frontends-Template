@@ -6,7 +6,7 @@
   "prefix": "tvp",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "ngx-build-plus:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/shell",
@@ -17,7 +17,9 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
         "styles": ["apps/shell/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "extraWebpackConfig": "apps/shell/webpack.config.js",
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -33,7 +35,8 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
         },
         "development": {
           "buildOptimizer": false,
@@ -47,21 +50,28 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "ngx-build-plus:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "shell:build:production"
+          "browserTarget": "shell:build:production",
+          "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
         },
         "development": {
           "browserTarget": "shell:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200,
+        "publicHost": "http://localhost:4200",
+        "extraWebpackConfig": "apps/shell/webpack.config.js"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "shell:build"
+        "browserTarget": "shell:build",
+        "extraWebpackConfig": "apps/shell/webpack.config.js"
       }
     },
     "lint": {
@@ -72,17 +82,14 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "jestConfig": "apps/shell/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "tsConfig": "apps/shell/tsconfig.spec.json",
+        "karmaConfig": "apps/shell/karma.conf.js",
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "styles": [],
+        "scripts": [],
+        "assets": []
       }
     }
   },
