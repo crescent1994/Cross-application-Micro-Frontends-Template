@@ -1,3 +1,9 @@
-<h1>{{ title }}</h1>
+<div>
+  <ul>
+    <li *ngFor="let route of router.config; let i = index">
+      <a [routerLink]="route.path">路径{{ i }}</a>
+    </li>
+  </ul>
 
-<tvp-nx-welcome></tvp-nx-welcome> <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

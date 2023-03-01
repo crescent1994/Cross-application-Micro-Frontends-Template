@@ -8,7 +8,7 @@
  *  @Param
  *  @Return
  *  @File           libs/creator/src/lib/dynamicRemote index.ts
- *  @Update         [time:user] 某用户更新此文件
+ *  @Update         [time:user]某用户更新此文件
  * */
 import { Routes } from '@angular/router';
 import {
@@ -38,18 +38,20 @@ export function buildRoutes(): Routes {
     console.warn('初始化清单数据未获取到');
     return [];
   }
-  const lazyRoutes: Routes = Object.keys(options).map(key => {
-    const entry = options[key];
-    return {
-      path: entry.routePath,
-      loadChildren: () =>
-        loadRemoteModule({
-          type: 'manifest',
-          remoteName: key,
-          exposedModule: entry.exposed
-        }).then(m => m[entry.moduleName])
-    };
+  const routers: Routes = [];
+  Object.entries(options).forEach(([key, entry]) => {
+    if (entry.exposed && entry.routePath) {
+      routers.push({
+        path: entry.routePath,
+        loadChildren: () =>
+          loadRemoteModule({
+            type: 'manifest',
+            remoteName: key,
+            exposedModule: entry.exposed
+          }).then(m => m[entry.moduleName])
+      });
+    }
   });
 
-  return [...lazyRoutes];
+  return routers;
 }

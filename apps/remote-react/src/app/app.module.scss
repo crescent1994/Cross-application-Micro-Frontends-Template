@@ -1,0 +1,22 @@
+/* Your styles goes here. */
+img {
+  height: 120px;
+  animation: rotate360 10s infinite linear;
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app {
+  display: flex;
+  margin: 16px auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

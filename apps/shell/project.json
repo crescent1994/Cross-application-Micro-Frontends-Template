@@ -1,6 +1,6 @@
 {
   "name": "shell",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/shell/src",
   "prefix": "tvp",
@@ -36,7 +36,13 @@
             }
           ],
           "outputHashing": "all",
-          "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
+          "extraWebpackConfig": "apps/shell/webpack.prod.config.js",
+          "fileReplacements": [
+            {
+              "replace": "apps/shell/src/environments/environment.ts",
+              "with": "apps/shell/src/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "buildOptimizer": false,
@@ -93,5 +99,6 @@
       }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["remote"]
 }

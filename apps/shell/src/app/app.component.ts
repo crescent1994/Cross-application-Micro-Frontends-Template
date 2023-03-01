@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ui } from '@tvp/ui';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tvp-root',
@@ -7,5 +8,7 @@ import { ui } from '@tvp/ui';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(public router: Router) {}
+
   title = ui();
 }

@@ -1,3 +1,11 @@
 {
-	"react": "http://localhost:3000/remoteEntry.js"
+  "remote-react": "http://localhost:3000/remoteEntry.js",
+  "vue": "http://localhost:8081/remoteEntry.js",
+  "remote": {
+    "remoteEntry": "http://localhost:4201/remoteEntry.js",
+    "exposed": "./Module",
+    "displayName": "远端程序1",
+    "routePath": "remote",
+    "moduleName": "EntryModule"
+  }
 }
