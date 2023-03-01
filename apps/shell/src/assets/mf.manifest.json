@@ -1,6 +1,6 @@
 {
   "remote-react": "http://localhost:3000/remoteEntry.js",
-  "vue": "http://localhost:8081/remoteEntry.js",
+  "remote-vue": "http://localhost:8080/assets/remoteEntry.js",
   "remote": {
     "remoteEntry": "http://localhost:4201/remoteEntry.js",
     "exposed": "./Module",

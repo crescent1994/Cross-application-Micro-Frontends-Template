@@ -24,9 +24,9 @@ export const appRoutes: Route[] = [
     path: 'vue',
     component: WebComponentWrapper,
     data: {
-      remoteEntry: 'http://localhost:8081/remoteEntry.js',
-      remoteName: 'vue',
-      exposedModule: './web-components',
+      remoteEntry: 'http://localhost:8080/assets/remoteEntry.js',
+      remoteName: 'remote-vue',
+      exposedModule: './RemoteVue',
       elementName: 'vue-element'
     } as WebComponentWrapperOptions
   }
