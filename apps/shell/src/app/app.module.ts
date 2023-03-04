@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { appRoutes } from './app.routes';
 import { InitProviders } from './core/services/initialization.service';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })
+    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    HeaderComponent
   ],
   providers: [...InitProviders],
   bootstrap: [AppComponent]

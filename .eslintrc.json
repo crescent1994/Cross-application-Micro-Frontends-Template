@@ -2,10 +2,15 @@
   "root": true,
   "extends": ["eslint:recommended"],
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "unused-imports", "eslint-plugin-import"],
+  "plugins": ["@nrwl/nx", "import","unused-imports", "eslint-plugin-import"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:import/typescript", "airbnb-base", "airbnb-typescript/base"],
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "project": ["apps/*/tsconfig.json","apps/*/tsconfig.*.json","libs/*/tsconfig.json", "libs/*/tsconfig.*.json"]
+      },
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
@@ -26,7 +31,12 @@
           { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
         ],
         "lines-between-class-members": "error",
-        "import/order": "warn"
+        "import/order": "warn",
+        "import/prefer-default-export": 0,
+        "import/no-named-as-default": "off",
+        "consistent-return": 0,
+        "no-plusplus": 0,
+        "import/no-extraneous-dependencies": 0
       }
     },
     {
@@ -51,5 +61,16 @@
       "extends": ["plugin:prettier/recommended"],
       "rules": {}
     }
-  ]
+  ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": ["apps/*/tsconfig.json", "libs/*/tsconfig.json"]
+      }
+    }
+  }
 }

@@ -21,8 +21,8 @@ import App from './app/app';
  * */
 class ReactElement extends DynamicRemoteEntry {
   connectedCallback() {
-    const _root = ReactDOM.createRoot(this);
-    _root.render(
+    const root = ReactDOM.createRoot(this);
+    root.render(
       <StrictMode>
         <App />
       </StrictMode>

@@ -1,0 +1,5 @@
+<ul class="tvp-header">
+  <li *ngFor="let route of router.config; let i = index">
+    <a [routerLink]="route.path">{{ route.title }}</a>
+  </li>
+</ul>

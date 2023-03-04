@@ -5,7 +5,9 @@ import federation from '@originjs/vite-plugin-federation';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/remote-vue',
-
+  server: {
+    host: '0.0.0.0'
+  },
   plugins: [
     vue(),
     viteTsConfigPaths({

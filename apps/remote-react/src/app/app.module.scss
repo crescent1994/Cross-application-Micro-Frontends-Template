@@ -1,8 +1,4 @@
 /* Your styles goes here. */
-img {
-  height: 120px;
-  animation: rotate360 10s infinite linear;
-}
 
 @keyframes rotate360 {
   0% {
@@ -19,4 +15,8 @@ img {
   justify-content: center;
   align-items: center;
   text-align: center;
+  img {
+    height: 120px;
+    animation: rotate360 10s infinite linear;
+  }
 }

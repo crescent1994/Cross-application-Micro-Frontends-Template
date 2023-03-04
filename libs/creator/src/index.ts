@@ -1,2 +1,2 @@
-export * from './lib/dynamicCustomRemote';
-export * from './lib/dynamicCustomRemote/type';
+export * from './lib/forAngular/dynamicCustomRemote';
+export * from './lib/forAngular/dynamicCustomRemote/type';

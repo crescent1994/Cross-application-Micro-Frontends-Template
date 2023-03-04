@@ -1,9 +1,7 @@
 <div>
-  <ul>
-    <li *ngFor="let route of router.config; let i = index">
-      <a [routerLink]="route.path">路径{{ i }}</a>
-    </li>
-  </ul>
-
+  <tvp-header />
+  <div class="list">
+    <div #placeHolder></div>
+  </div>
   <router-outlet></router-outlet>
 </div>

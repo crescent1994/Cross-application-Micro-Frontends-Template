@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
+import { BoardComponent } from './board/board.component';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -17,7 +18,8 @@ import { NxWelcomeComponent } from './nx-welcome.component';
         }
       ],
       { initialNavigation: 'enabledBlocking' }
-    )
+    ),
+    BoardComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
