@@ -1,45 +1,51 @@
 {
   "remote": {
     "remoteEntry": "http://localhost:4201/remoteEntry.js",
-    "usage": "page",
     "frame": "identical",
-    "exposed": "./Module",
-    "displayName": "远端程序",
-    "routePath": "remote",
-    "moduleName": "EntryModule"
-  },
-  "remoteBroad": {
-    "remoteEntry": "http://localhost:4201/remoteEntry.js",
-    "usage": "component",
-    "frame": "identical",
-    "exposed": "./board",
-    "displayName": "broad",
-    "componentName": "BoardComponent"
+    "pages": [
+      {
+        "exposed": "./Module",
+        "displayName": "远端程序",
+        "routePath": "remote",
+        "moduleName": "EntryModule"
+      }
+    ],
+    "components": [
+      {
+        "exposed": "./board",
+        "moduleName": "BoardComponent"
+      }
+    ]
   },
   "remote-vue": {
     "remoteEntry": "http://localhost:8080/assets/remoteEntry.js",
-    "usage": "page",
     "frame": "outside",
-    "exposed": "./RemoteVue",
-    "displayName": "VUE",
-    "routePath": "vue"
+    "pages": [
+      {
+        "exposed": "./RemoteVue",
+        "displayName": "VUE",
+        "routePath": "vue",
+        "elementName": "vue-element"
+      }
+    ]
   },
   "remote-react": {
     "remoteEntry": "http://localhost:3000/remoteEntry.js",
-    "usage": "page",
     "frame": "outside",
-    "exposed": "./Module",
-    "displayName": "REACT",
-    "routePath": "react",
-    "elementName": "remote-react"
-  },
-  "reactButton": {
-    "remoteEntry": "http://localhost:3000/remoteEntry.js",
-    "usage": "component",
-    "frame": "outside",
-    "exposed": "./Button",
-    "displayName": "button",
-    "elementName": "remote-button",
-    "componentName": "RemoteButton"
+    "pages": [
+      {
+        "exposed": "./Module",
+        "displayName": "REACT",
+        "routePath": "react",
+        "elementName": "remote-react"
+      }
+    ],
+    "components": [
+      {
+        "exposed": "./Components",
+        "elementName": "react-board",
+        "moduleName": "RemoteReactBoard"
+      }
+    ]
   }
 }

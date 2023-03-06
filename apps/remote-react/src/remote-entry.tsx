@@ -1,6 +1,5 @@
 import * as ReactDOM from 'react-dom/client';
 import { StrictMode } from 'react';
-import { DynamicRemoteEntry } from '@tvp/creator';
 import App from './app/app';
 
 /**
@@ -19,7 +18,7 @@ import App from './app/app';
  *  @File           apps/remote-react/src remote-entry.ts
  *  @Update         [time:user] 某用户更新此文件
  * */
-class ReactElement extends DynamicRemoteEntry {
+class ReactElement extends HTMLElement {
   connectedCallback() {
     const root = ReactDOM.createRoot(this);
     root.render(

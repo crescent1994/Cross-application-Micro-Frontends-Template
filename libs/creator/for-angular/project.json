@@ -1,0 +1,28 @@
+{
+  "name": "creator-for-angular",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/creator/for-angular/src",
+  "prefix": "tvp",
+  "targets": {
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "tsConfig": "libs/creator/for-angular/tsconfig.spec.json",
+        "karmaConfig": "libs/creator/for-angular/karma.conf.js",
+        "polyfills": ["zone.js", "zone.js/testing"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/creator/for-angular/**/*.ts",
+          "libs/creator/for-angular/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

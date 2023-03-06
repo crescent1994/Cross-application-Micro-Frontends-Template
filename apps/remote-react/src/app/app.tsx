@@ -18,7 +18,7 @@ export function App() {
         </div>
       </div>
       <ReactButton />
-      <Board />
+      <Board data="react" />
     </div>
   );
 }

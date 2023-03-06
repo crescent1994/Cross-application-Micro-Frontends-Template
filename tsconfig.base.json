@@ -24,10 +24,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tvp/creator": ["libs/creator/src/index.ts"],
+      "@tvp/creator/for-angular": ["libs/creator/for-angular/src/index.ts"],
+      "@tvp/creator/for-react": ["libs/creator/for-react/src/index.ts"],
       "@tvp/data-access": ["libs/data-access/src/index.ts"],
-      "@tvp/feature": ["libs/feature/src/index.ts"],
-      "@tvp/ui": ["libs/ui/src/index.ts"],
+      "@tvp/feature/angular": ["libs/feature/angular/src/index.ts"],
+      "@tvp/feature/core": ["libs/feature/core/src/index.ts"],
+      "@tvp/ui/angular": ["libs/ui/angular/src/index.ts"],
+      "@tvp/ui/core": ["libs/ui/core/src/index.ts"],
       "@tvp/util": ["libs/util/src/index.ts"]
     },
     "types": ["node"]

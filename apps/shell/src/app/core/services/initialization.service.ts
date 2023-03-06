@@ -1,6 +1,6 @@
 import { APP_INITIALIZER, EnvironmentProviders, Injectable, Provider } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DynamicRemoteProcessing } from '@tvp/creator';
+import { DynamicRemoteService } from '@tvp/creator/for-angular';
 import { Router } from '@angular/router';
 
 /**
@@ -11,14 +11,16 @@ import { Router } from '@angular/router';
 export class InitializationService {
   progress = 0;
 
+  drs = DynamicRemoteService.instance;
+
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   // 获取远程主机配置清单文件
   getRemotesConfig = async () => {
     // 获取远程主机配置列表，生成路由与组件名单
-    await DynamicRemoteProcessing.instance.build();
-    // 重设路由配置
-    this.router.resetConfig([...this.router.config, ...DynamicRemoteProcessing.instance.routers]);
+    await this.drs.build();
+    // // 重设路由配置
+    this.router.resetConfig([...this.router.config, ...this.drs.routers]);
     this.progress += 10;
   };
 

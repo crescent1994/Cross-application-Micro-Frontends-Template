@@ -1,8 +1,7 @@
-import { DynamicRemoteEntry } from '@tvp/creator';
 import { createApp } from 'vue';
 import App from './App.vue';
 
-export class VueElement extends DynamicRemoteEntry {
+export class VueElement extends HTMLElement {
   connectedCallback() {
     const app = createApp(App);
     app.mount(this);
