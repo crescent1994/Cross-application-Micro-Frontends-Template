@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { getManifest } from '@angular-architects/module-federation';
 import { Print } from '@tvp/util';
+import { Type, ViewContainerRef } from '@angular/core';
 import { RemoteProcessing } from './remoteProcessing';
 import { ComponentCandidate, CustomManifest } from './type';
+import { DynamicWrapperComponent } from './dynamic-wrapper.component';
 
 export class DynamicRemoteService {
   static instance = new DynamicRemoteService();
@@ -60,5 +62,29 @@ export class DynamicRemoteService {
     if (!config) return;
     const components = await config.componentAsync();
     return { components, data: config.data };
+  }
+
+  async createComponents(remote: string, viewContainer: ViewContainerRef, componentName?: string) {
+    this.getComponentsByRemoteName(remote).then(result => {
+      if (result) {
+        const { components, data } = result;
+        // 如果是相同框架
+        if (data.frame === 'identical') {
+          // 如果传入名字则取名字，否则取第一个
+          if (componentName && components[componentName])
+            return viewContainer.createComponent(components[componentName] as Type<any>);
+          if (Object.keys(components).length >= 1) {
+            const [name] = Object.keys(components);
+            return viewContainer.createComponent(components[name] as Type<any>);
+          }
+          Print.Ero('创建组件失败，请检查参数是否正确');
+        } else {
+          // 创建一个代理容器用于渲染自定义组件（外部框架）
+          const wrapper = viewContainer.createComponent(DynamicWrapperComponent);
+          wrapper.instance.options = data;
+          return wrapper;
+        }
+      }
+    });
   }
 }
