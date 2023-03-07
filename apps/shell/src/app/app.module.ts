@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { InitProviders } from '@tvp/creator/for-angular';
+import { createInitProviders, InitProvidersOps } from '@tvp/creator/for-angular';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { appRoutes } from './app.routes';
@@ -17,7 +17,9 @@ import { HeaderComponent } from './header/header.component';
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     HeaderComponent
   ],
-  providers: [...InitProviders(['getRemotesConfig', 'getSettings'])],
+  providers: [
+    ...createInitProviders([InitProvidersOps.getRemotesConfig, InitProvidersOps.getSettings])
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
